@@ -20,7 +20,7 @@ class TaskHandler {
 
                     if (file.name == "R.txt") {
                         File assetDir = new File(project.android.sourceSets.main.assets.srcDirs.path.getAt(0))
-                        File skinDir = new File(assetDir, "skin")
+                        File skinDir = new File(assetDir, "skins")
                         boolean mkdir = skinDir.mkdirs()
                         File dataFile = new File(skinDir, "data")
                         println("dataFile.createNewFile:${dataFile.absolutePath},$mkdir")

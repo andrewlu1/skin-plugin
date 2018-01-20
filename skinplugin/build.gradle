@@ -14,7 +14,7 @@ dependencies {
 }
 
 group = "cn.andrewlu.plugins"//project属性
-version = "1.0.0"//project属性
+version = "1.0.1"//project属性
 //uploadArchives 类型是upload，这个task不是'maven'创建的
 //而是'maven'定义了一个rule,而后由我们自己创建的，关于rule，请看后面内容
 //uploadArchives {
