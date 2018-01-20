@@ -1,0 +1,36 @@
+apply plugin: 'java'//导入java插件用于，编译打包我们的插件
+apply plugin: 'maven'//maven插件，用于上传插件到仓库
+apply plugin: 'groovy'
+
+// 添加远程仓库
+repositories {
+    jcenter()
+}
+
+dependencies {
+    //导入Gradle的api，要写插件，肯定要使用Gradle的api
+    compile gradleApi()
+
+}
+
+group = "cn.andrewlu.plugins"//project属性
+version = "1.0.0"//project属性
+//uploadArchives 类型是upload，这个task不是'maven'创建的
+//而是'maven'定义了一个rule,而后由我们自己创建的，关于rule，请看后面内容
+//uploadArchives {
+//    //本地仓库的一种
+////    repositories {
+////        mavenLocal()
+////    }
+//    // 添加远程仓库
+//    repositories {
+//        jcenter()
+//    }
+//}
+apply from: "../uploadJCenter.gradle"
+
+/**
+ * 遇到的错误：不识别groovy文件，原因是 没有apply plugin: groovy
+ * 发布不成功，原因是 repoitories 路径配置有问题,改用mavenLocal()
+ *
+ */
