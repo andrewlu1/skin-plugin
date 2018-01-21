@@ -10,21 +10,16 @@ repositories {
 dependencies {
     //导入Gradle的api，要写插件，肯定要使用Gradle的api
     compile gradleApi()
-
 }
 
 group = "cn.andrewlu.plugins"//project属性
-version = "1.0.1"//project属性
+version = "1.0.0"//project属性
 //uploadArchives 类型是upload，这个task不是'maven'创建的
 //而是'maven'定义了一个rule,而后由我们自己创建的，关于rule，请看后面内容
 //uploadArchives {
 //    //本地仓库的一种
-////    repositories {
-////        mavenLocal()
-////    }
-//    // 添加远程仓库
 //    repositories {
-//        jcenter()
+//        mavenLocal()
 //    }
 //}
 apply from: "../uploadJCenter.gradle"

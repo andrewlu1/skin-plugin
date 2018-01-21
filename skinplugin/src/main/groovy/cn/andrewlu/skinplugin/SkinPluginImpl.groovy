@@ -16,6 +16,8 @@ class SkinPluginImpl implements Plugin<Project> {
                     }
                 }
             }
+            //add resmanager 依赖。
+            project.dependencies.implementation("cn.andrewlu:resmanager:+")
         }
     }
 
