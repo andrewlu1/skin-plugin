@@ -4,6 +4,7 @@ import org.gradle.api.Project
 import org.gradle.api.Task;
 
 class TaskHandler {
+
     public TaskHandler() {
     }
 
@@ -26,8 +27,13 @@ class TaskHandler {
                         println("dataFile.createNewFile:${dataFile.absolutePath},$mkdir")
                         FileInputStream inputStream = new FileInputStream(file)
                         DataOutputStream outputStream = new DataOutputStream(new FileOutputStream(dataFile))
-                        List<String> lines = inputStream.readLines()
 
+                        //write header
+                        ThemeExtensionParams head = project.extensions.getByType(ThemeExtensionParams)
+                        String headStr = head != null ? head.toJSon() : ""
+                        writeHeader(outputStream, headStr)
+
+                        List<String> lines = inputStream.readLines()
                         lines.each { line ->
                             String[] split = line.split(" ")
                             if (split.length < 4) return
@@ -54,5 +60,13 @@ class TaskHandler {
             }
             println(">>>>>>>>>>>>>>  end process Resource with R.txt")
         }
+    }
+    private final String magic = "SKIN"
+
+    private void writeHeader(DataOutputStream outputStream, String header) {
+        if (header == null) header = ""
+        println("HEAD:${header}")
+        outputStream.writeUTF(magic)
+        outputStream.writeUTF(header)
     }
 }

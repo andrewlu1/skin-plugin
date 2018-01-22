@@ -8,9 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-//        classpath 'cn.andrewlu.plugins:skinplugin:1.0.1'
+
         // 将项目发布到JCenter 所需要的jar   添加依赖
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:+'
         classpath 'com.github.dcendents:android-maven-plugin:+'
