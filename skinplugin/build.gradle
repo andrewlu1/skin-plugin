@@ -1,6 +1,9 @@
 apply plugin: 'java'//导入java插件用于，编译打包我们的插件
-apply plugin: 'maven'//maven插件，用于上传插件到仓库
+//apply plugin: 'maven'//maven插件，用于上传插件到仓库
 apply plugin: 'groovy'
+
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
 
 // 添加远程仓库
 repositories {
@@ -13,8 +16,36 @@ dependencies {
 
 }
 
-group = "cn.andrewlu.plugins"//project属性
-version = "1.0.1"//project属性
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'android-skin-plugin'
+
+    publishedGroupId = "cn.andrewlu.plugins"
+    libraryName = 'SkinPlugin'
+    artifact = 'skinplugin'
+
+    libraryDescription = 'use to generate skinnable project.'//描述信息
+
+    siteUrl = 'https://github.com/andrewlu1/skin-plugin'
+    gitUrl = 'https://github.com/andrewlu1/skin-plugin.git'
+
+    libraryVersion = '1.0.2'
+
+    developerId = 'andrewlu1'
+    developerName = 'andrewlu'  //替换为自己的
+    developerEmail = 'andrewlu1@126.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
+//group = publishedGroupId //project属性
+//version = libraryVersion//project属性
 //uploadArchives 类型是upload，这个task不是'maven'创建的
 //而是'maven'定义了一个rule,而后由我们自己创建的，关于rule，请看后面内容
 //uploadArchives {
@@ -23,8 +54,6 @@ version = "1.0.1"//project属性
 //        mavenLocal()
 //    }
 //}
-apply from: "../uploadJCenter.gradle"
-
 /**
  * 遇到的错误：不识别groovy文件，原因是 没有apply plugin: groovy
  * 发布不成功，原因是 repoitories 路径配置有问题,改用mavenLocal()

@@ -1,5 +1,17 @@
 # skin-plugin
 皮肤apk 编译插件。
+# V1.0.2
+Resmanager工具包增加Xml自动皮肤化功能，使用逻辑更简单，开发者0配置实现换肤能力。
+漏传javaSource,导致jcenter无法审核通过问题修复。
+已上传jcenter审核，审核通过后即可直接添加classpath:xx引用，而不必再配置maven地址。
+也就是说现在只需要两行gradle 配置即可引入换肤框架：
+1. add classpath "cn.andrewlu.plugins:skinplugin:+"
+2. apply plugin: 'cn.andrewlu.plugins.skinplugin'
+
+_THAT ALL!_
+
+
+
 # V1.0.1
 增加插件自动添加resmanager工具包的依赖，不用再手动添加依赖。
 增加皮肤信息配置能力。可在皮肤apk中对皮肤的基础信息进行一番配置，用于客户端对皮肤进行管理。
